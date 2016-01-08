@@ -1,7 +1,6 @@
 # This for mono-opt under ubuntu 14.04.2
-FROM ubuntu:14.04.2
+FROM ubuntu
 
-MAINTAINER azraelrabbit <azraelrabbit@gmail.com>
 
 #add mono  official source
 RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -27,7 +26,7 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/mono/lib
 ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 
 # install mono web server Jexus
-RUN cd /tmp && curl http://www.daqiao.io/5.6.4/install | sh
+RUN cd /tmp && curl jexus.org/5.8.1/upgrade|sh
 
 RUN mkdir /data 
 #&& touch /data/x && mkdir /data/jwslog && mkdir /data/siteconf && mkdir /data/wwwroot
