@@ -27,8 +27,6 @@ ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 
 # install mono web server Jexus
 RUN cd /tmp 
-RUN sudo /usr/jexus/jws stop
-RUN sudo rm -rf jexus-5.6.4* >/dev/null 2>&1
 RUN wget http://www.linuxdot.net/down/jexus-5.8.1.tar.gz
 RUN tar -zxvf jexus-5.8.1.tar.gz
 RUN cd jexus-5.8.1
