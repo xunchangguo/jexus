@@ -26,8 +26,15 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/mono/lib
 ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 
 # install mono web server Jexus
-RUN cd /tmp && curl https://github.com/jamesqj/jexus/blob/master/install | sh
-
+RUN cd /tmp 
+RUN sudo /usr/jexus/jws stop
+RUN sudo rm -rf jexus-5.6.4* >/dev/null 2>&1
+RUN wget http://www.linuxdot.net/down/jexus-5.8.1.tar.gz
+RUN tar -zxvf jexus-5.8.1.tar.gz
+RUN cd jexus-5.8.1
+RUN sudo ./install
+RUN cd /tmp
+RUN sudo rm -rf jexus-5.8.1* >/dev/null 2>&1
 RUN mkdir /data 
 #&& touch /data/x && mkdir /data/jwslog && mkdir /data/siteconf && mkdir /data/wwwroot
 #RUN cp /usr/jexus/siteconf/default /data/siteconf/
