@@ -29,8 +29,8 @@ ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 RUN cd /tmp 
 RUN wget http://www.linuxdot.net/down/jexus-5.8.1.tar.gz
 RUN tar -zxvf jexus-5.8.1.tar.gz
-RUN cd jexus-5.8.1
-RUN sudo /tmp/jexus-5.8.1/install
+RUN cd /jexus-5.8.1
+RUN sudo ./install
 RUN cd /tmp
 RUN sudo rm -rf jexus-5.8.1* >/dev/null 2>&1
 RUN mkdir /data 
