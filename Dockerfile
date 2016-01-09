@@ -11,7 +11,7 @@ RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' |
 RUN apt-get update && \
         apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl
 
-
+RUN sudo apt-get install -y --force-yes vim
 RUN sudo sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 RUN mkdir -p /var/run/sshd && \
       echo "root:monups" |chpasswd  && \
