@@ -14,8 +14,8 @@ RUN apt-get update && \
 RUN sudo apt-get install -y --force-yes vim
 RUN sudo sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 RUN mkdir -p /var/run/sshd && \
-      echo "root:monups" |chpasswd  && \
-      useradd admin  &&  echo "admin:monupw" | chpasswd  &&  echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers 
+      echo "root:jexus" |chpasswd  && \
+      useradd admin  &&  echo "admin:jexus" | chpasswd  &&  echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers 
 
 # Fix PAM login issue with sshd
 RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
