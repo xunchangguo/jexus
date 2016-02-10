@@ -9,7 +9,7 @@ RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' |
 
 #Install mono
 RUN apt-get update && \
-        apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl
+        apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl sqlite3 libsqlite3-dev
 
 RUN sudo apt-get install -y --force-yes vim
 RUN sudo sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
