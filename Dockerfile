@@ -31,6 +31,7 @@ RUN cd /tmp
 RUN wget http://www.linuxdot.net/down/jexus-5.8.1.tar.gz
 RUN tar -zxvf jexus-5.8.1.tar.gz
 RUN cd jexus-5.8.1
+RUN sudo chmod +x ./install
 RUN sudo ./install
 #&& touch /data/x && mkdir /data/jwslog && mkdir /data/siteconf && mkdir /data/wwwroot
 #RUN cp /usr/jexus/siteconf/default /data/siteconf/
