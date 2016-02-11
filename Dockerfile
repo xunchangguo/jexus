@@ -26,8 +26,8 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/mono/lib
 ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 
 # install mono web server Jexus
-RUN cd /tmp && curl http://jamesqj-jexus.daoapp.io/install | sh
-
+#RUN cd /tmp && curl http://jamesqj-jexus.daoapp.io/install | sh
+RUN cd /tmp && curl http://jexus.org/5.8.0/install | sh
 #&& touch /data/x && mkdir /data/jwslog && mkdir /data/siteconf && mkdir /data/wwwroot
 #RUN cp /usr/jexus/siteconf/default /data/siteconf/
 #RUN cp /usr/jexus/jws.conf /usr/jexus/jws.conf.backup
