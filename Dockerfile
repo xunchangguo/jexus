@@ -31,7 +31,7 @@ ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 #RUN tar -zxvpf jexus-5.8.1.tar.gz 
 #RUN cd jexus-5.8.1
 #RUN sudo ./install
-RUN curl jexus.org/5.8.1/install|sh
+RUN curl jexus.org/5.8.x/install|sh
 #&& touch /data/x && mkdir /data/jwslog && mkdir /data/siteconf && mkdir /data/wwwroot
 #RUN cp /usr/jexus/siteconf/default /data/siteconf/
 #RUN cp /usr/jexus/jws.conf /usr/jexus/jws.conf.backup
