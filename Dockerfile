@@ -4,14 +4,15 @@ FROM ubuntu
 
 #add mono  official source
 RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
+#RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
 #RUN  sudo apt-get update 
 
 #Install mono
+#RUN apt-get update && \
+        #apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl sqlite3 libsqlite3-dev
 RUN apt-get update && \
-        apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl sqlite3 libsqlite3-dev
-
-RUN sudo apt-get install -y --force-yes vim
+        apt-get install -y --force-yes openssh-server curl sqlite3 libsqlite3-dev
+#RUN sudo apt-get install -y --force-yes vim
 RUN sudo sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 RUN mkdir -p /var/run/sshd && \
       echo "root:jexus" |chpasswd  && \
@@ -27,11 +28,13 @@ ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 
 # install mono web server Jexus
 #RUN cd /tmp && curl http://jamesqj-jexus.daoapp.io/install | sh
-#RUN cd /tmp 
-#RUN tar -zxvpf jexus-5.8.1.tar.gz 
+RUN cd /tmp
+RUN wget linuxdot.net/down/jexus-5.8.1-x64.tar.gz
+RUN tar -zxvf jexus-5.8.1-x64.tar.gz 
+RUN sudo mv jexus /usr
 #RUN cd jexus-5.8.1
 #RUN sudo ./install
-RUN curl jexus.org/5.8.x/install|sh
+#RUN curl jexus.org/5.8.x/install|sh
 #&& touch /data/x && mkdir /data/jwslog && mkdir /data/siteconf && mkdir /data/wwwroot
 #RUN cp /usr/jexus/siteconf/default /data/siteconf/
 #RUN cp /usr/jexus/jws.conf /usr/jexus/jws.conf.backup
