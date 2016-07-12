@@ -14,6 +14,7 @@ RUN apt-get update && \
         apt-get install -y --force-yes openssh-server curl sqlite3 libsqlite3-dev
 #RUN sudo apt-get install -y --force-yes vim
 RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN mkdir -p /var/run/sshd && \
       echo "root:jexus" |chpasswd  && \
       useradd admin  &&  echo "admin:jexus" | chpasswd  &&  echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers 
