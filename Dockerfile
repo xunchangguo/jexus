@@ -13,7 +13,7 @@ FROM ubuntu
 RUN apt-get update && \
         apt-get install -y --force-yes openssh-server curl sqlite3 libsqlite3-dev
 #RUN sudo apt-get install -y --force-yes vim
-RUN sudo sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 RUN mkdir -p /var/run/sshd && \
       echo "root:jexus" |chpasswd  && \
       useradd admin  &&  echo "admin:jexus" | chpasswd  &&  echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers 
@@ -31,7 +31,7 @@ ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 RUN cd /tmp
 RUN wget linuxdot.net/down/jexus-5.8.1-x64.tar.gz
 RUN tar -zxvf jexus-5.8.1-x64.tar.gz 
-RUN sudo mv jexus /usr
+RUN  mv jexus /usr
 #RUN cd jexus-5.8.1
 #RUN sudo ./install
 #RUN curl jexus.org/5.8.x/install|sh
@@ -39,7 +39,7 @@ RUN sudo mv jexus /usr
 #RUN cp /usr/jexus/siteconf/default /data/siteconf/
 #RUN cp /usr/jexus/jws.conf /usr/jexus/jws.conf.backup
 #RUN sed -i 's/SiteLogDir=log/SiteLogDir=/data/jwslog/g' /usr/jesus/jws.conf && sed -i 's/SiteConfigDir=siteconf/SiteConfigDir=/data/siteconf/g' /usr/jexus/jws.conf
-RUN sudo sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /usr/jexus/siteconf/default
+RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /usr/jexus/siteconf/default
 
 VOLUME ["/data"]
 
