@@ -29,9 +29,9 @@ ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 
 # install mono web server Jexus
 #RUN cd /tmp && curl http://jamesqj-jexus.daoapp.io/install | sh
-RUN cd /tmp
-RUN wget linuxdot.net/down/jexus-5.8.2-x64.tar.gz
-RUN tar -zxvf jexus-5.8.2-x64.tar.gz 
+#RUN cd /tmp
+#RUN wget linuxdot.net/down/jexus-5.8.2-x64.tar.gz
+#RUN tar -zxvf jexus-5.8.2-x64.tar.gz 
 #RUN  mv jexus /usr
 #RUN rm -rf /tmp/jexus*
 #RUN cd jexus-5.8.1
@@ -44,8 +44,8 @@ RUN tar -zxvf jexus-5.8.2-x64.tar.gz
 #RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
 
 VOLUME ["/data"]
-RUN  mv jexus /data
-RUN rm -rf /tmp/jexus*
+#RUN  mv jexus /data
+#RUN rm -rf /tmp/jexus*
 #RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
 # open port for ssh 
 EXPOSE 22  8081  80
