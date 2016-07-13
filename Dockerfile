@@ -46,7 +46,7 @@ RUN tar -zxvf jexus-5.8.2-x64.tar.gz
 VOLUME ["/data"]
 RUN  mv jexus /data
 RUN rm -rf /tmp/jexus*
-RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
+#RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
 # open port for ssh 
 EXPOSE 22  8081  80
 
