@@ -30,9 +30,10 @@ ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 # install mono web server Jexus
 #RUN cd /tmp && curl http://jamesqj-jexus.daoapp.io/install | sh
 RUN cd /tmp
-RUN wget linuxdot.net/down/jexus-5.8.1-x64.tar.gz
+RUN wget linuxdot.net/down/jexus-5.8.2-x64.tar.gz
 RUN tar -zxvf jexus-5.8.2-x64.tar.gz 
-RUN  mv jexus /usr
+#RUN  mv jexus /usr
+#RUN rm -rf /tmp/jexus*
 #RUN cd jexus-5.8.1
 #RUN sudo ./install
 #RUN curl jexus.org/5.8.x/install|sh
@@ -40,10 +41,12 @@ RUN  mv jexus /usr
 #RUN cp /usr/jexus/siteconf/default /data/siteconf/
 #RUN cp /usr/jexus/jws.conf /usr/jexus/jws.conf.backup
 #RUN sed -i 's/SiteLogDir=log/SiteLogDir=/data/jwslog/g' /usr/jesus/jws.conf && sed -i 's/SiteConfigDir=siteconf/SiteConfigDir=/data/siteconf/g' /usr/jexus/jws.conf
-RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /usr/jexus/siteconf/default
+#RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
 
 VOLUME ["/data"]
-
+RUN  mv jexus /data
+RUN rm -rf /tmp/jexus*
+RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
 # open port for ssh 
 EXPOSE 22  8081  80
 
@@ -57,6 +60,6 @@ EXPOSE 22  8081  80
 #&& /usr/jexus/jws start
 #ENTRYPOINT /usr/sbin/sshd -D 
 #CMD    ["/usr/sbin/sshd", "-D"]
-CMD  /usr/jexus/jws start && /usr/sbin/sshd -D
+CMD  /data/jexus/jws start && /usr/sbin/sshd -D
 
 
