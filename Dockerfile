@@ -31,7 +31,7 @@ ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 #RUN cd /tmp && curl http://jamesqj-jexus.daoapp.io/install | sh
 RUN cd /tmp
 RUN wget linuxdot.net/down/jexus-5.8.1-x64.tar.gz
-RUN tar -zxvf jexus-5.8.1-x64.tar.gz 
+RUN tar -zxvf jexus-5.8.2-x64.tar.gz 
 RUN  mv jexus /usr
 #RUN cd jexus-5.8.1
 #RUN sudo ./install
