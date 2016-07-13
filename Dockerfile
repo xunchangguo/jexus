@@ -23,9 +23,9 @@ RUN mkdir -p /var/run/sshd && \
 RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
 
 #set the PATH for mono-opt
-ENV PATH $PATH:/opt/mono/bin
-ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/mono/lib
-ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
+#ENV PATH $PATH:/opt/mono/bin
+#ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/mono/lib
+#ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
 
 # install mono web server Jexus
 #RUN cd /tmp && curl http://jamesqj-jexus.daoapp.io/install | sh
