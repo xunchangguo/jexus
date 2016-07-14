@@ -1,6 +1,28 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu
-RUN apt-get update 
+RUN RUN apt-get update \
+
+    && apt-get install -y --no-install-recommends \
+
+        libunwind8 \
+
+        libunwind8-dev \
+
+        gettext \
+
+        libicu-dev \
+
+        liblttng-ust-dev \
+
+        libcurl4-openssl-dev \
+
+        libssl-dev \
+
+        uuid-dev \
+
+        unzip \
+
+    && rm -rf /var/lib/apt/lists/* 
 
 #add mono  official source
 #RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -8,7 +30,7 @@ RUN apt-get update
 #RUN apt-get update
 
 
-ENV PATH $PATH:/data/dotnet
+
 #Install mono
 #RUN apt-get update && \
         #apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl sqlite3 libsqlite3-dev
