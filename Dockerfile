@@ -1,6 +1,6 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu
-RUN apt-get 
+ 
 RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
 RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
 RUN apt-get update
