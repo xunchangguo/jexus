@@ -1,5 +1,5 @@
 # This for mono-opt under ubuntu 14.04.2
-FROM ubuntu
+FROM centos
 
 
 #add mono  official source
@@ -10,17 +10,17 @@ FROM ubuntu
 #Install mono
 #RUN apt-get update && \
         #apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl sqlite3 libsqlite3-dev
-RUN apt-get update && \
-        apt-get install -y --force-yes openssh-server curl sqlite3 libsqlite3-dev
+#RUN apt-get update && \
+     #   apt-get install -y --force-yes openssh-server curl sqlite3 libsqlite3-dev
 #RUN sudo apt-get install -y --force-yes vim
-RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-RUN mkdir -p /var/run/sshd && \
-      echo "root:jexus" |chpasswd  && \
-      useradd admin  &&  echo "admin:jexus" | chpasswd  &&  echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers 
+#RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+#RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+#RUN mkdir -p /var/run/sshd && \
+ #     echo "root:jexus" |chpasswd  && \
+ #     useradd admin  &&  echo "admin:jexus" | chpasswd  &&  echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers 
 
 # Fix PAM login issue with sshd
-RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
+#RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
 
 #set the PATH for mono-opt
 #ENV PATH $PATH:/opt/mono/bin
@@ -48,7 +48,7 @@ RUN sed -i 's/session    required     pam_loginuid.so/#session    required     p
 #RUN rm -rf /tmp/jexus*
 #RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
 # open port for ssh 
-EXPOSE 5000  8081  80
+EXPOSE 5000  22  80
 
 # open port for jexus web server
 #EXPOSE 8081
@@ -60,6 +60,6 @@ EXPOSE 5000  8081  80
 #&& /usr/jexus/jws start
 #ENTRYPOINT /usr/sbin/sshd -D 
 #CMD    ["/usr/sbin/sshd", "-D"]
-CMD  /data/jexus/jws start && /usr/sbin/sshd -D
+CMD  /data/jexus/jws start #&& /usr/sbin/sshd -D
 
 
