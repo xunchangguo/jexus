@@ -1,6 +1,6 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu
-RUN apt-get update
+RUN apt-get update \
 && apt-get install -y --no-install-recommends \
 
         libunwind8 \
