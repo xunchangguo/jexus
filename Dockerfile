@@ -1,6 +1,6 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM centos:7
-RUN yum install -y libunwind libicu
+#RUN yum install -y libunwind libicu
 #RUN curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?LinkID=809131
 #RUN mkdir -p /opt/dotnet && tar zxf dotnet.tar.gz -C /opt/dotnet
 #RUN ln -s /opt/dotnet/dotnet /usr/local/bin
