@@ -2,27 +2,16 @@
 FROM ubuntu
 RUN RUN apt-get update
 RUN apt-get install -y libunwind8
-RUN apt-get install -y libunwind8
-RUN apt-get install -y libunwind8
-RUN apt-get install -y libunwind8
-RUN apt-get install -y libunwind8
-        libunwind8-dev \
-
-        gettext \
-
-        libicu-dev \
-
-        liblttng-ust-dev \
-
-        libcurl4-openssl-dev \
-
-        libssl-dev \
-
-        uuid-dev \
-
-        unzip \
-
-    && rm -rf /var/lib/apt/lists/* 
+RUN apt-get install -y libunwind8-dev
+RUN apt-get install -y gettext
+RUN apt-get install -y libicu-dev
+RUN apt-get install -y liblttng-ust-dev
+RUN apt-get install -y liblttng-ust-dev
+RUN apt-get install -y libcurl4-openssl-dev
+RUN apt-get install -y libssl-dev
+RUN apt-get install -y uuid-dev
+RUN apt-get install -y unzip
+RUN rm -rf /var/lib/apt/lists/* 
 # Install .NET Core
 
 ENV DOTNET_VERSION 1.0.0
