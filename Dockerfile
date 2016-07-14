@@ -2,7 +2,7 @@
 FROM centos:7
 RUN yum install -y libunwind libicu
 RUN curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?LinkID=809131
-RUN mkdir -p /opt/dotnet && sudo tar zxf dotnet.tar.gz -C /opt/dotnet
+RUN mkdir -p /opt/dotnet && tar zxf dotnet.tar.gz -C /opt/dotnet
 RUN ln -s /opt/dotnet/dotnet /usr/local/bin
 #RUN apt-get update \
 #&& apt-get install -y --no-install-recommends \
