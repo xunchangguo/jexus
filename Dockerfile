@@ -1,9 +1,11 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu
-RUN RUN apt-get update \
-
-    && apt-get install -y --no-install-recommends \
-
+RUN RUN apt-get update
+RUN apt-get install -y libunwind8
+RUN apt-get install -y libunwind8
+RUN apt-get install -y libunwind8
+RUN apt-get install -y libunwind8
+RUN apt-get install -y libunwind8
         libunwind8-dev \
 
         gettext \
