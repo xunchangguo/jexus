@@ -9,7 +9,7 @@ RUN apt-get update
 
 RUN cd /tmp
 RUN mkdir dotnet
-RUN dotnet
+RUN cd dotnet
 RUN wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/Latest/dotnet-ubuntu-x64.latest.tar.gz
 RUN tar -zxvf dotnet-ubuntu-x64.latest.tar.gz
 RUN cd/tmp
