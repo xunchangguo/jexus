@@ -4,8 +4,6 @@ RUN RUN apt-get update \
 
     && apt-get install -y --no-install-recommends \
 
-        libunwind8 \
-
         libunwind8-dev \
 
         gettext \
