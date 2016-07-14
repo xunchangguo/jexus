@@ -7,10 +7,11 @@ FROM ubuntu
 #RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
 
 RUN apt-get update
+RUN sudo apt-get install axel
 RUN cd /tmp
 RUN mkdir dotnet
 RUN cd dotnet
-RUN wget download.microsoft.com/download/8/4/E/84EA9F4F-0E3A-4B41-A18A-36D51B06CBED/dotnet-ubuntu-x64.1.0.0.tar.gz
+RUN axel https://download.microsoft.com/download/8/4/E/84EA9F4F-0E3A-4B41-A18A-36D51B06CBED/dotnet-ubuntu-x64.1.0.0.tar.gz
 RUN tar -zxvf dotnet-ubuntu-x64.1.0.0.tar.gz
 RUN rm -rf dotnet-ubuntu-x64.1.0.0.tar.gz
 RUN cd /tmp
