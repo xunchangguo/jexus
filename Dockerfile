@@ -24,11 +24,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 # Install .NET Core
 
-ENV DOTNET_VERSION 1.0.0
+#ENV DOTNET_VERSION 1.0.0
 
-ENV DOTNET_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/$DOTNET_VERSION/dotnet-ubuntu-x64.$DOTNET_VERSION.tar.gz
+#ENV DOTNET_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/$DOTNET_VERSION/dotnet-ubuntu-x64.$DOTNET_VERSION.tar.gz
 
-RUN wget -O dotnet.tar.gz $DOTNET_DOWNLOAD_URL \
+RUN wget -O dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/1.0.0/dotnet-ubuntu-x64.1.0.0.tar.gz \
 
     && mkdir -p /usr/share/dotnet \
 
