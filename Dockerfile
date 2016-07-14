@@ -1,6 +1,32 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu
-FROM microsoft/dotnet:1.0.0-core-deps
+RUN apt-get update \
+
+    && apt-get install -y --no-install-recommends \
+
+        libc6 \
+
+        libcurl3 \
+
+        libgcc1 \
+
+        libgssapi-krb5-2 \
+
+        libicu52 \
+
+        liblttng-ust0 \
+
+        libssl1.0.0 \
+
+        libstdc++6 \
+
+        libunwind8 \
+
+        libuuid1 \
+
+        zlib1g \
+
+    && rm -rf /var/lib/apt/lists/*
 
 
 
@@ -37,7 +63,7 @@ RUN curl -SL $DOTNET_DOWNLOAD_URL --output dotnet.tar.gz \
 #add mono  official source
 #RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 #RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
-RUN apt-get update
+#RUN apt-get update
 
 
 #Install mono
