@@ -1,5 +1,5 @@
 # This for mono-opt under ubuntu 14.04.2
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 #RUN apt-get update \
 #&& apt-get install -y --no-install-recommends \
 
@@ -25,7 +25,7 @@ FROM ubuntu:14.04
 # Install .NET Core
 
 #RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list' \ 
+RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list' \ 
 && apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
 RUN apt-get update
 RUN apt-get install dotnet-dev-1.0.0-preview2-003121
