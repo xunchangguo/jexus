@@ -23,7 +23,23 @@ RUN RUN apt-get update \
         unzip \
 
     && rm -rf /var/lib/apt/lists/* 
+# Install .NET Core
 
+ENV DOTNET_VERSION 1.0.0
+
+ENV DOTNET_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/$DOTNET_VERSION/dotnet-ubuntu-x64.$DOTNET_VERSION.tar.gz
+
+
+
+RUN curl -SL $DOTNET_DOWNLOAD_URL --output dotnet.tar.gz \
+
+    && mkdir -p /usr/share/dotnet \
+
+    && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
+
+    && rm dotnet.tar.gz \
+
+    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 #add mono  official source
 #RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 #RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
