@@ -1,6 +1,6 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu
-RUN RUN apt-get update
+RUN apt-get update
 RUN apt-get install -y libunwind8
 RUN apt-get install -y libunwind8-dev
 RUN apt-get install -y gettext
