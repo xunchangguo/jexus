@@ -1,16 +1,21 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu
 RUN apt-get update 
-RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
-RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
 
-apt-get install dotnet-sharedframework-microsoft.netcore.app-1.0.0-rc2-3002702
 #add mono  official source
 #RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 #RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
 #RUN apt-get update
 
-
+RUN cd /tmp
+RUN mkdir dotnet
+RUN dotnet
+RUN wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/Latest/dotnet-ubuntu-x64.latest.tar.gz
+RUN tar -zxvf dotnet-ubuntu-x64.latest.tar.gz
+RUN cd/tmp
+RUN rm -rf dotnet-ubuntu-x64.latest.tar.gz
+RUN mv dotnet /usr
+ENV PATH $PATH:/usr/dotnet
 #Install mono
 #RUN apt-get update && \
         #apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl sqlite3 libsqlite3-dev
