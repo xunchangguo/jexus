@@ -28,8 +28,6 @@ ENV DOTNET_VERSION 1.0.0
 
 ENV DOTNET_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/$DOTNET_VERSION/dotnet-ubuntu-x64.$DOTNET_VERSION.tar.gz
 
-
-
 RUN curl -SL $DOTNET_DOWNLOAD_URL --output dotnet.tar.gz \
 
     && mkdir -p /usr/share/dotnet \
