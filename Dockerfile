@@ -10,7 +10,7 @@ RUN apt-get update
 RUN cd /tmp
 RUN mkdir dotnet
 RUN cd dotnet
-RUN wget https://download.microsoft.com/download/8/4/E/84EA9F4F-0E3A-4B41-A18A-36D51B06CBED/dotnet-ubuntu-x64.1.0.0.tar.gz
+RUN wget download.microsoft.com/download/8/4/E/84EA9F4F-0E3A-4B41-A18A-36D51B06CBED/dotnet-ubuntu-x64.1.0.0.tar.gz
 RUN tar -zxvf dotnet-ubuntu-x64.1.0.0.tar.gz
 RUN rm -rf dotnet-ubuntu-x64.1.0.0.tar.gz
 RUN cd /tmp
