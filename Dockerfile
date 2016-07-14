@@ -1,63 +1,10 @@
 # This for mono-opt under ubuntu 14.04.2
-FROM debian:jessie
-RUN apt-get update \
-
-    && apt-get install -y --no-install-recommends \
-
-        libc6 \
-
-        libcurl3 \
-
-        libgcc1 \
-
-        libgssapi-krb5-2 \
-
-        liblttng-ust0 \
-
-        libssl1.0.0 \
-
-        libstdc++6 \
-
-        libunwind8 \
-
-        libuuid1 \
-
-        zlib1g \
-
-    && rm -rf /var/lib/apt/lists/*
-
-
-
-RUN apt-get update \
-
-    && apt-get install -y --no-install-recommends \
-
-        ca-certificates \
-
-        curl \
-
-    && rm -rf /var/lib/apt/lists/*
-
-
-
-# Install .NET Core
-
-ENV DOTNET_VERSION 1.0.0
-
-ENV DOTNET_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/$DOTNET_VERSION/dotnet-debian-x64.$DOTNET_VERSION.tar.gz
-
-
-
-RUN curl -SL $DOTNET_DOWNLOAD_URL --output dotnet.tar.gz \
-
-    && mkdir -p /usr/share/dotnet \
-
-    && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
-
-    && rm dotnet.tar.gz \
-
-    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
-
+FROM ubuntu
+RUN apt-get 
+RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
+RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+RUN apt-get update
+apt-get install dotnet-sharedframework-microsoft.netcore.app-1.0.0-rc2-3002702
 #add mono  official source
 #RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 #RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
