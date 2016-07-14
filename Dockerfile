@@ -7,15 +7,8 @@ RUN apt-get update
 #RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
 #RUN apt-get update
 
-RUN cd /tmp
-RUN mkdir dotnet
-RUN cd dotnet
-RUN wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/Latest/dotnet-ubuntu-x64.latest.tar.gz
-RUN tar -zxvf dotnet-ubuntu-x64.latest.tar.gz
-RUN cd/tmp
-RUN rm -rf dotnet-ubuntu-x64.latest.tar.gz
-RUN mv dotnet /usr
-ENV PATH $PATH:/usr/dotnet
+
+ENV PATH $PATH:/data/dotnet
 #Install mono
 #RUN apt-get update && \
         #apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl sqlite3 libsqlite3-dev
