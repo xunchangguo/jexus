@@ -1,6 +1,6 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM centos
-
+FROM microsoft/dotnet:1.0.0-core
 
 #add mono  official source
 #RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
