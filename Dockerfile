@@ -1,9 +1,9 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu
- 
+RUN apt-get update 
 RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
 RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-RUN apt-get update
+
 apt-get install dotnet-sharedframework-microsoft.netcore.app-1.0.0-rc2-3002702
 #add mono  official source
 #RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
