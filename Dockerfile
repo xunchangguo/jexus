@@ -1,36 +1,10 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu:14.04
+RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+RUN apt-get update
+RUN apt-get install dotnet-dev-1.0.0-preview3-003180
 
-
-#RUN apt-get update \
-#&& apt-get install -y --no-install-recommends \
-
- #       libunwind8 \
-
- #       libunwind8-dev \
-
-  #      gettext \
-
-  #      libicu-dev \
-
- #      liblttng-ust-dev \
-
-  #      libcurl4-openssl-dev \
-
-  #      libssl-dev \
-
-#        uuid-dev \
-
- #      unzip \
-
-#    && rm -rf /var/lib/apt/lists/*
-# Install .NET Core
-
-#RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-
-#ENV DOTNET_VERSION 1.0.0
-
-#ENV DOTNET_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/$DOTNET_VERSION/dotnet-ubuntu-x64.$DOTNET_VERSION.tar.gz
 
 
 #add mono  official source
