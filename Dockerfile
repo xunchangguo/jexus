@@ -9,7 +9,14 @@ RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet
 RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
 
 RUN apt-get update
-RUN apt-get install dotnet-dev-1.0.0-preview2-003121
+#RUN apt-get install dotnet-dev-1.0.0-preview2-003121
+RUN cd /tmp
+RUN wget https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/dotnet-dev-ubuntu-x64.latest.tar.gz
+RUN tar -zxvf dotnet-dev-ubuntu-x64.latest.tar.gz
+RUN cd dotnet-dev-ubuntu-x64.latest
+RUN ./configure --prefix=/usr/local/dotnet
+RUN make all
+RUN make install && make install-init && make install-commandmode && make install-config
 #add mono  official source
 #RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 #RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
