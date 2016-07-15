@@ -29,11 +29,11 @@ RUN sed -i 's/session    required     pam_loginuid.so/#session    required     p
 
 # install mono web server Jexus
 #RUN cd /tmp && curl http://jamesqj-jexus.daoapp.io/install | sh
-RUN cd /tmp
-RUN wget linuxdot.net/down/jexus-5.8.2-x64.tar.gz
-RUN tar -zxvf jexus-5.8.2-x64.tar.gz 
-RUN  mv jexus /usr
-RUN rm -rf /tmp/jexus*
+#RUN cd /tmp
+#RUN wget linuxdot.net/down/jexus-5.8.2-x64.tar.gz
+#RUN tar -zxvf jexus-5.8.2-x64.tar.gz 
+#RUN  mv jexus /usr
+#RUN rm -rf /tmp/jexus*
 #RUN cd jexus-5.8.1
 #RUN sudo ./install
 #RUN curl jexus.org/5.8.x/install|sh
