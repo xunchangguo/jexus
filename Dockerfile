@@ -1,13 +1,14 @@
 # This for mono-opt under ubuntu 14.04.2
 FROM ubuntu:14.04
-RUN apt-get update apt-get install -y apt-transport-https
+RUN apt-get update
+RUN apt-get install -y apt-transport-https
 #RUN sh-c 'echo "deb http://security.ubuntu.com/ubuntu precise-security main" > /etc/apt/sources.list'
 
 RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
 
 RUN apt-get update
-RUN apt-get install -y apt-get install dotnet-dev-1.0.0-preview2-003121
+RUN apt-get install -y dotnet-dev-1.0.0-preview2-003121
 
 
 
