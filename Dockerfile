@@ -2,7 +2,7 @@
 FROM ubuntu:14.04
 RUN apt-get update
 RUN apt-get install -y apt-transport-https
-RUN apt-get install -y libstdc
+RUN apt-get install -y libstdc++6-5.2
 #RUN sh-c 'echo "deb http://security.ubuntu.com/ubuntu precise-security main" > /etc/apt/sources.list'
  
 RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
