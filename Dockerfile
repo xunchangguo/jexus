@@ -5,10 +5,10 @@ RUN apt-get install -y apt-transport-https
 RUN apt-get install -y wget libcurl3 libicu52 liblldb-3.6 liblttng-ust0 libunwind8
 #RUN sh-c 'echo "deb http://security.ubuntu.com/ubuntu precise-security main" > /etc/apt/sources.list'
  
-RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+#RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+#RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
 
-RUN apt-get update
+#RUN apt-get update
 #RUN apt-get install dotnet-dev-1.0.0-preview2-003121
 RUN cd /tmp
 RUN wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-host-ubuntu-x64.latest.deb
@@ -19,6 +19,7 @@ RUN dpkg -i dotnet-host-ubuntu-x64.latest.deb
 RUN dpkg -i dotnet-hostfxr-ubuntu-x64.latest.deb
 RUN dpkg -i dotnet-sharedframework-ubuntu-x64.latest.deb
 RUN dpkg -i dotnet-sdk-ubuntu-x64.latest.deb
+RUN rm -rf dotnet*
 #RUN wget https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/dotnet-dev-ubuntu-x64.latest.tar.gz
 #RUN tar -zxvf dotnet-dev-ubuntu-x64.latest.tar.gz
 #RUN cd dotnet-dev-ubuntu-x64.latest
