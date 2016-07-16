@@ -1,15 +1,10 @@
 # This for mono-opt under ubuntu 14.04.2
-FROM ubuntu
+
+FROM ubuntu:14.04
 
 
-#add mono  official source
-#RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-#RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
-#RUN  sudo apt-get update 
 
-#Install mono
-#RUN apt-get update && \
-        #apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl sqlite3 libsqlite3-dev
+
 RUN apt-get update && \
         apt-get install -y --force-yes openssh-server curl sqlite3 libsqlite3-dev
 #RUN sudo apt-get install -y --force-yes vim
@@ -21,7 +16,31 @@ RUN mkdir -p /var/run/sshd && \
 
 # Fix PAM login issue with sshd
 RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
+RUN apt-get install -y apt-transport-https
 
+RUN apt-get install -y wget libcurl3 libicu52 liblldb-3.6 liblttng-ust0 libunwind8
+
+
+
+RUN cd /tmp
+
+RUN wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-host-ubuntu-x64.latest.deb
+
+RUN wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-hostfxr-ubuntu-x64.latest.deb
+
+RUN wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-sharedframework-ubuntu-x64.latest.deb
+
+RUN wget https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/dotnet-sdk-ubuntu-x64.latest.deb
+
+RUN dpkg -i dotnet-host-ubuntu-x64.latest.deb
+
+RUN dpkg -i dotnet-hostfxr-ubuntu-x64.latest.deb
+
+RUN dpkg -i dotnet-sharedframework-ubuntu-x64.latest.deb
+
+RUN dpkg -i dotnet-sdk-ubuntu-x64.latest.deb
+
+RUN rm -rf dotnet*
 #set the PATH for mono-opt
 #ENV PATH $PATH:/opt/mono/bin
 #ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/mono/lib
