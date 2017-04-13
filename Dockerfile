@@ -27,10 +27,11 @@ RUN apt-get update && \
         apt-get install -y --force-yes openssh-server curl sqlite3 libsqlite3-dev
 
 #RUN sudo apt-get install -y --force-yes vim
+RUN apt-get -y  upgrade
+RUN apt-get -y install wget curl
+#RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
-RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+#RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN mkdir -p /var/run/sshd && \
 
@@ -98,7 +99,7 @@ RUN sed -i 's/session    required     pam_loginuid.so/#session    required     p
 
 # open port for ssh 
 
-EXPOSE 22  8081  80
+#EXPOSE 22  8081  80
 
 
 
@@ -112,7 +113,17 @@ EXPOSE 22  8081  80
 
 #EXPOSE 80
 
+RUN curl https://jexus.org/release/x64/install.sh|sh
 
+EXPOSE 80 22
+
+WORKDIR /usr/jexus
+
+ENV LD_LIBRARY_PATH=/usr/jexus/runtime/lib:$LD_LIBRARY_PATH
+ENV PATH=/usr/jexus:$PATH
+ENV TERM="xterm"
+
+ENTRYPOINT ["/usr/jexus/jwss"]
 
 
 
@@ -122,4 +133,4 @@ EXPOSE 22  8081  80
 
 #CMD    ["/usr/sbin/sshd", "-D"]
 
-CMD  /var/jexus/jws start && /usr/sbin/sshd -D
+#CMD  /var/jexus/jws start && /usr/sbin/sshd -D
