@@ -29,9 +29,9 @@ RUN apt-get update && \
 #RUN sudo apt-get install -y --force-yes vim
 RUN apt-get -y  upgrade
 RUN apt-get -y install wget curl
-#RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
-#RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN mkdir -p /var/run/sshd && \
 
