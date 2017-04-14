@@ -12,8 +12,8 @@ RUN sed -i 's/session    required     pam_loginuid.so/#session    required     p
 RUN curl https://jexus.org/release/x64/install.sh|sh
 RUN mkdir /data
 RUN sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /usr/jexus/siteconf/default
-RUN sed -i "s/# AppHost=/AppRoot=/g" /usr/jexus/siteconf/default
-RUN sed -i "s/\CmdLine=\/usr\/local\/x\/xx;AppRoot=\/usr\/local\/x/CmdLine=\/data\/local\/webapp;AppRoot=\/data\/local/g" /usr/jexus/siteconf/default
+#RUN sed -i "s/# AppHost=/AppRoot=/g" /usr/jexus/siteconf/default
+#RUN sed -i "s/\CmdLine=\/usr\/local\/x\/xx;AppRoot=\/usr\/local\/x/CmdLine=\/data\/local\/webapp;AppRoot=\/data\/local/g" /usr/jexus/siteconf/default
 VOLUME ["/data"]
 EXPOSE 80 22
 
