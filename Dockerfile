@@ -1,9 +1,8 @@
-FROM ubuntu
+FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get -y  upgrade
-RUN apt-get -y install wget curl
-RUN apt-get -y install --force-yes openssh-server
+RUN apt-get -y  upgrade 
+RUN apt-get -y install --force-yes openssh-server wget curl
 RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 RUN mkdir -p /var/run/sshd && \
       echo "root:jexus" |chpasswd  && \
@@ -15,12 +14,12 @@ RUN sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /usr/jexus/siteconf/
 #RUN sed -i "s/# AppHost=/AppRoot=/g" /usr/jexus/siteconf/default
 #RUN sed -i "s/\CmdLine=\/usr\/local\/x\/xx;AppRoot=\/usr\/local\/x/CmdLine=\/data\/local\/webapp;AppRoot=\/data\/local/g" /usr/jexus/siteconf/default
 VOLUME ["/data"]
-EXPOSE 80 22
+EXPOSE 80 22 443
+CMD /usr/jexus/jwss
+#WORKDIR /usr/jexus
 
-WORKDIR /usr/jexus
+#ENV LD_LIBRARY_PATH=/usr/jexus/runtime/lib:$LD_LIBRARY_PATH
+#ENV PATH=/usr/jexus:$PATH
+#ENV TERM="xterm"
 
-ENV LD_LIBRARY_PATH=/usr/jexus/runtime/lib:$LD_LIBRARY_PATH
-ENV PATH=/usr/jexus:$PATH
-ENV TERM="xterm"
-
-ENTRYPOINT ["/usr/jexus/jwss"]
+#ENTRYPOINT ["/usr/jexus/jwss"]
