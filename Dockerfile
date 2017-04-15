@@ -1,25 +1,17 @@
-FROM ubuntu:latest
+ROM ubuntu:latest
+MAINTAINER Yunei.Liuyun <j66x@163.com>
 
-RUN apt-get update
-RUN apt-get -y  upgrade 
-RUN apt-get -y install --force-yes openssh-server wget curl
-RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-RUN mkdir -p /var/run/sshd && \
-      echo "root:jexus" |chpasswd  && \
-      useradd admin  &&  echo "admin:jexus" | chpasswd  &&  echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers
-RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
+RUN apt-get update; apt-get -y upgrade; apt-get -y install wget curl ssh vim libx11-dev libfreetype6-dev libexpat-dev libglib2.0-bin
 RUN curl https://jexus.org/release/x64/install.sh|sh
-RUN mkdir /data
-RUN sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /usr/jexus/siteconf/default
-#RUN sed -i "s/# AppHost=/AppRoot=/g" /usr/jexus/siteconf/default
-#RUN sed -i "s/\CmdLine=\/usr\/local\/x\/xx;AppRoot=\/usr\/local\/x/CmdLine=\/data\/local\/webapp;AppRoot=\/data\/local/g" /usr/jexus/siteconf/default
-VOLUME ["/data"]
-EXPOSE 80 22 443
-CMD /usr/jexus/jwss
-#WORKDIR /usr/jexus
 
-#ENV LD_LIBRARY_PATH=/usr/jexus/runtime/lib:$LD_LIBRARY_PATH
-#ENV PATH=/usr/jexus:$PATH
-#ENV TERM="xterm"
+# RUN sed -i -e 's/^PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
-#ENTRYPOINT ["/usr/jexus/jwss"]
+ADD bootstrap.sh /usr/bin/
+RUN chmod +x /usr/bin/bootstrap.sh
+
+EXPOSE 80 22
+
+ENV TERM="xterm"
+
+WORKDIR /usr/jexus
+ENTRYPOINT ["/usr/bin/bootstrap.sh"]
