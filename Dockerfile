@@ -8,6 +8,9 @@ RUN curl https://jexus.org/release/x64/install.sh|sh
 
 ADD bootstrap.sh /usr/bin/
 RUN chmod +x /usr/bin/bootstrap.sh
+RUN mkdir /data
+RUN sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /usr/jexus/siteconf/default
+VOLUME ["/data"]
 
 EXPOSE 80 22
 
