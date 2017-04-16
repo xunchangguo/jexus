@@ -4,7 +4,7 @@ MAINTAINER Yunei.Liuyun <j66x@163.com>
 RUN apt-get update; apt-get -y upgrade; apt-get -y install wget curl ssh vim libx11-dev libfreetype6-dev libexpat-dev libglib2.0-bin
 RUN curl https://jexus.org/release/x64/install.sh|sh
 
-# RUN sed -i -e 's/^PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+RUN sed -i -e 's/^PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN echo "root:password" | chpasswd && \
 	  
       useradd admin  &&  echo "admin:jexus" | chpasswd  &&  echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers
