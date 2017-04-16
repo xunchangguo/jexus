@@ -5,9 +5,9 @@ RUN apt-get update; apt-get -y upgrade; apt-get -y install wget curl ssh vim lib
 RUN curl https://jexus.org/release/x64/install.sh|sh
 
 RUN mkdir /var/run/sshd  
-RUN echo 'root:rootroot' |chpasswd  
-RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config  
-RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config 
+RUN echo "root:rootroot" |chpasswd  
+RUN sed -ri "s/^PermitRootLogin\s+.*/PermitRootLogin yes/" /etc/ssh/sshd_config  
+RUN sed -ri "s/UsePAM yes/#UsePAM yes/g" /etc/ssh/sshd_config 
 ADD bootstrap.sh /usr/bin/
 RUN chmod +x /usr/bin/bootstrap.sh
 RUN mkdir /data
