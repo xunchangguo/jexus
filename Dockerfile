@@ -7,7 +7,7 @@ RUN curl https://jexus.org/release/x64/install.sh|sh
 RUN sed -i -e 's/^PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN echo "root:password" | chpasswd && \
 	  
-      useradd admin  &&  echo "admin:jexus" | chpasswd  &&  echo "admin   ALL=(ALL)       ALL" >> /etc/sudoers
+      useradd admin  &&  echo "admin:jexus" | chpasswd
 ADD bootstrap.sh /usr/bin/
 RUN chmod +x /usr/bin/bootstrap.sh
 RUN mkdir /data
