@@ -25,7 +25,7 @@ RUN sed -i 's/session    required     pam_loginuid.so/#session    required     p
 
 
 
-run curl https://jexus.org/release/x64/install.sh|sh
+RUN curl https://jexus.org/release/x64/install.sh|sh
 
 RUN sed -i 's/SiteLogDir=log/SiteLogDir=/data/jwslog/g' /usr/jesus/jws.conf && sed -i 's/SiteConfigDir=siteconf/SiteConfigDir=/data/siteconf/g' /usr/jexus/jws.conf
 
@@ -57,9 +57,7 @@ EXPOSE 22 80
 
 #EXPOSE 80
 
-RUN curl https://jexus.org/release/x64/install.sh|sh
 
-EXPOSE 80 22
 
 
 
