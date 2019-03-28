@@ -2,31 +2,9 @@
 
 FROM ubuntu
 
-
-
-
-
-#add mono  official source
-
-#RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-
-#RUN sh -c "echo 'deb http://download.mono-project.com/repo/debian wheezy main' | sudo tee /etc/apt/sources.list.d/mono-xamarin.list"
-
-#RUN  sudo apt-get update 
-
-
-
-#Install mono
-
-#RUN apt-get update && \
-
-        #apt-get install -y --force-yes mono-devel mono-complete referenceassemblies-pcl openssh-server curl sqlite3 libsqlite3-dev
-
 RUN apt-get update && \
 
         apt-get install -y --force-yes openssh-server curl sqlite3 libsqlite3-dev
-
-#RUN sudo apt-get install -y --force-yes vim
 RUN apt-get -y  upgrade
 RUN apt-get -y install wget
 RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
@@ -47,49 +25,15 @@ RUN sed -i 's/session    required     pam_loginuid.so/#session    required     p
 
 
 
-#set the PATH for mono-opt
+run curl https://jexus.org/release/x64/install.sh|sh
 
-#ENV PATH $PATH:/opt/mono/bin
+RUN sed -i 's/SiteLogDir=log/SiteLogDir=/data/jwslog/g' /usr/jesus/jws.conf && sed -i 's/SiteConfigDir=siteconf/SiteConfigDir=/data/siteconf/g' /usr/jexus/jws.conf
 
-#ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/mono/lib
-
-#ENV PKG_CONFIG_PATH $PKG_CONFIG_PATH:/opt/mono/lib/pkgconfig
+RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
 
 
 
-# install mono web server Jexus
-
-#RUN cd /tmp && curl http://jamesqj-jexus.daoapp.io/install | sh
-
-#RUN cd /tmp
-
-#RUN wget linuxdot.net/down/jexus-5.8.2-x64.tar.gz
-
-#RUN tar -zxvf jexus-5.8.2-x64.tar.gz 
-
-#RUN  mv jexus /usr
-
-#RUN rm -rf /tmp/jexus*
-
-#RUN cd jexus-5.8.1
-
-#RUN sudo ./install
-
-#RUN curl jexus.org/5.8.x/install|sh
-
-#&& touch /data/x && mkdir /data/jwslog && mkdir /data/siteconf && mkdir /data/wwwroot
-
-#RUN cp /usr/jexus/siteconf/default /data/siteconf/
-
-#RUN cp /usr/jexus/jws.conf /usr/jexus/jws.conf.backup
-
-#RUN sed -i 's/SiteLogDir=log/SiteLogDir=/data/jwslog/g' /usr/jesus/jws.conf && sed -i 's/SiteConfigDir=siteconf/SiteConfigDir=/data/siteconf/g' /usr/jexus/jws.conf
-
-#RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
-
-
-
-#VOLUME ["/data"]
+VOLUME ["/data"]
 
 #RUN  mv jexus /data
 
@@ -97,9 +41,9 @@ RUN sed -i 's/session    required     pam_loginuid.so/#session    required     p
 
 #RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
 
-# open port for ssh 
+open port for ssh 
 
-#EXPOSE 22  8081  80
+EXPOSE 22 80
 
 
 
@@ -117,13 +61,14 @@ RUN curl https://jexus.org/release/x64/install.sh|sh
 
 EXPOSE 80 22
 
-WORKDIR /usr/jexus
+
 
 ENV LD_LIBRARY_PATH=/usr/jexus/runtime/lib:$LD_LIBRARY_PATH
 ENV PATH=/usr/jexus:$PATH
 ENV TERM="xterm"
 
 ENTRYPOINT ["/usr/jexus/jwss"]
+WORKDIR /usr/jexus
 
 
 
@@ -133,4 +78,4 @@ ENTRYPOINT ["/usr/jexus/jwss"]
 
 #CMD    ["/usr/sbin/sshd", "-D"]
 
-#CMD  /var/jexus/jws start && /usr/sbin/sshd -D
+CMD  /var/jexus/jws start && /usr/sbin/sshd -D
