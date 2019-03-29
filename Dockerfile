@@ -41,7 +41,7 @@ VOLUME ["/data"]
 
 #RUN  sed -i "s/root=\/ \/var\/www\/default/root=\/ \/data/g" /data/jexus/siteconf/default
 
-open port for ssh 
+#open port for ssh 
 
 EXPOSE 22 80
 
