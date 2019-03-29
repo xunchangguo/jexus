@@ -9,7 +9,7 @@ RUN apt-get -y  upgrade
 RUN apt-get -y install wget
 RUN  sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+#RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN mkdir -p /var/run/sshd && \
 
