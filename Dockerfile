@@ -19,8 +19,8 @@ RUN apt-get update \
 RUN mkdir /var/run/sshd
 #RUN chmod  4755  /usr/sbin/chpasswd
 #RUN sudo echo 'root:1234abcd' | chpasswd
-RUN sudo useradd -m jexus -g sudo -s /bin/bash -d /home/jexus
-RUN sudo passwd jexus
+RUN sudo useradd -m jexus -g sudo -s /bin/bash -d /home/jexus -p 1234abcd
+#RUN sudo passwd jexus
 
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
