@@ -1,13 +1,6 @@
 FROM debian:latest
 
 MAINTAINER Mongo <willem@xcloudbiz.com>
-#更新apt-get源 使用sohu的源
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
-        echo "deb http://mirrors.163.com/debian/ jessie main non-free contrib" >/etc/apt/sources.list && \
-        echo "deb http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list && \
-        echo "deb-src http://mirrors.163.com/debian/ jessie main non-free contrib" >>/etc/apt/sources.list && \
-        echo "deb-src http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
-
 
 RUN apt-get update \
 
