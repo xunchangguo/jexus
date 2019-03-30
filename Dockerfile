@@ -6,7 +6,7 @@ MAINTAINER Mongo <willem@xcloudbiz.com>
 
 RUN apt-get update \
 
-        && apt-get -y install wget openssh-server \
+        && apt-get -y install wget openssh-server sudo \
 
         && cd /usr \
 
@@ -19,7 +19,8 @@ RUN apt-get update \
         && rm -rf /var/lib/apt/lists/* jexus-5.8.3-x64.tar.gz
 
 RUN mkdir /var/run/sshd
-RUN echo 'root:1234abcd' | chpasswd
+#RUN chmod  4755  /usr/sbin/chpasswd
+RUN sudo echo 'root:1234abcd' | chpasswd
 
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
