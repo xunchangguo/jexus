@@ -34,5 +34,5 @@ EXPOSE 80 22
 
 WORKDIR /usr/jexus
 
-CMD /usr/jexus/jwss
+CMD sudo /usr/jexus/jwss
 CMD ["/usr/sbin/sshd", "-D"]
