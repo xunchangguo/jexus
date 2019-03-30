@@ -34,5 +34,5 @@ EXPOSE 80 22
 
 WORKDIR /usr/jexus
 
-ENTRYPOINT ["/usr/jexus/jwss"]
+#ENTRYPOINT ["/usr/jexus/jwss"]
 CMD ["/usr/sbin/sshd", "-D"]
