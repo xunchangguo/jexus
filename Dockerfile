@@ -4,7 +4,7 @@ MAINTAINER Mongo <willem@xcloudbiz.com>
 
 RUN apt-get update \
 
-        && apt-get -y install wget openssh-server sudo \
+        && apt-get -y install wget openssh-server sudo sqlite \
 
         && cd /usr \
 
