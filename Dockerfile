@@ -4,17 +4,17 @@ MAINTAINER Mongo <willem@xcloudbiz.com>
 
 RUN apt-get update \
 
-        && apt-get -y install wget openssh-server sudo sqlite \
+        && apt-get -y install wget openssh-server sudo sqlite fontconfig xfonts-utils \
 
         && cd /usr \
 
-        && wget http://www.linuxdot.net/down/jexus-5.8.3-x64.tar.gz \
+        && wget https://linuxdot.net/down/jexus-6.1-x64.tar.gz \
 
-        && tar -zxvf jexus-5.8.3-x64.tar.gz \
+        && tar -zxvf jexus-6.1-x64.tar.gz \
 
         && apt-get -y autoremove --purge wget \
 
-        && rm -rf /var/lib/apt/lists/* jexus-5.8.3-x64.tar.gz
+        && rm -rf /var/lib/apt/lists/* jexus-6.1-x64.tar.gz
 
 RUN mkdir /var/run/sshd
 #RUN chmod  4755  /usr/sbin/chpasswd
