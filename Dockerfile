@@ -8,13 +8,13 @@ RUN apt-get update \
 
         && cd /usr \
 
-        && wget https://linuxdot.net/down/jexus-6.2-x64.tar.gz \
+        && wget https://linuxdot.net/down/jexus-6.2.x-x64.tar.gz \
 
-        && tar -zxvf jexus-6.2-x64.tar.gz \
+        && tar -zxvf jexus-6.2.x-x64.tar.gz \
 
         && apt-get -y autoremove --purge wget \
 
-        && rm -rf /var/lib/apt/lists/* jexus-6.2-x64.tar.gz
+        && rm -rf /var/lib/apt/lists/* jexus-6.2.x-x64.tar.gz
 
 #RUN mkdir /var/run/sshd
 #RUN chmod  4755  /usr/sbin/chpasswd
