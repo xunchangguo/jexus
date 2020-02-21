@@ -1,10 +1,10 @@
-FROM debian::buster-slim
+FROM debian:buster-slim
 
 MAINTAINER Mongo <willem@xcloudbiz.com>
 
 RUN apt-get update \
 
-        && apt-get -y install sqlite fontconfig xfonts-utils \
+        && apt-get -y wget install sqlite fontconfig xfonts-utils \
 
         && cd /usr \
 
@@ -32,7 +32,7 @@ RUN apt-get update \
 #RUN echo "export VISIBLE=now" >> /etc/profile
 ADD bootstrap.sh /usr/bin/
 RUN chmod +x /usr/bin/bootstrap.sh
-EXPOSE 80
+EXPOSE 80 443
 
 WORKDIR /usr/jexus
 
