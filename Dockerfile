@@ -4,7 +4,7 @@ MAINTAINER Mongo <willem@xcloudbiz.com>
 
 RUN apt-get update \
 
-        && apt-get -y wget install sqlite fontconfig xfonts-utils \
+        && apt-get -y install wget sqlite fontconfig xfonts-utils \
 
         && cd /usr \
 
