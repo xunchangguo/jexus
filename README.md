@@ -1,4 +1,4 @@
 monup
 =====
 
-dockerfile for mono with jexus web server under ubuntu14.
+dockerfile for mono with jexus web server under debian.
