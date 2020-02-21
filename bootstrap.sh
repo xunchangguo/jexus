@@ -1,11 +1,11 @@
 #!/bin/bash
 
-service ssh start
+#service ssh start
 /usr/jexus/jws start
 
 function stop_svc {
   /usr/jexus/jws stop
-  service ssh stop
+  #service ssh stop
   exit 0
 }
 
