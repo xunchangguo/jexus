@@ -1,10 +1,10 @@
-FROM debian:latest
+FROM debian:buster-slim
 
 MAINTAINER Mongo <willem@xcloudbiz.com>
 
 RUN apt-get update \
 
-        && apt-get -y install wget sqlite fontconfig xfonts-utils \
+        && apt-get -y install wget openssh-server sudo sqlite fontconfig xfonts-utils \
 
         && cd /usr \
 
@@ -16,23 +16,23 @@ RUN apt-get update \
 
         && rm -rf /var/lib/apt/lists/* jexus-6.2.x-x64.tar.gz
 
-#RUN mkdir /var/run/sshd
+RUN mkdir /var/run/sshd
 #RUN chmod  4755  /usr/sbin/chpasswd
 #RUN sudo echo 'root:1234abcd' | chpasswd
-#RUN sudo useradd -m jexus -g sudo -s /bin/bash -d /home/jexus
+RUN sudo useradd -m jexus -g sudo -s /bin/bash -d /home/jexus
 #RUN sudo passwd jexus
-#RUN sudo echo 'jexus:abc' | chpasswd
-#RUN echo "jexus   ALL=(ALL)       ALL" >> /etc/sudoers
-#RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sudo echo 'jexus:abc' | chpasswd
+RUN echo "jexus   ALL=(ALL)       ALL" >> /etc/sudoers
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # SSH login fix. Otherwise user is kicked off after login
-#RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
-#ENV NOTVISIBLE "in users profile"
-#RUN echo "export VISIBLE=now" >> /etc/profile
+ENV NOTVISIBLE "in users profile"
+RUN echo "export VISIBLE=now" >> /etc/profile
 ADD bootstrap.sh /usr/bin/
 RUN chmod +x /usr/bin/bootstrap.sh
-EXPOSE 80 443
+EXPOSE 80 22
 
 WORKDIR /usr/jexus
 
