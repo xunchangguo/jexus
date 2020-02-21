@@ -9,7 +9,7 @@ function stop_svc {
   exit 0
 }
 
-trap 'stop_svc' SIGTERM
+#trap 'stop_svc' SIGTERM
 
 while true
 do
