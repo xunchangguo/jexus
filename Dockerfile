@@ -2,7 +2,7 @@ FROM debian:buster-slim
 
 MAINTAINER jamesqj <271686059@qq.com>
 
-COPY bootstrat.sh /usr/bin/
+COPY bootstart.sh /usr/bin/
 
 # Install wget, download and install jexus, then cleanup
 COPY install.sh /tmp/
@@ -15,4 +15,4 @@ VOLUME ["/usr/jexus/siteconf", "/var/www", "/usr/jexus/log"]
 # Define workdir
 WORKDIR /usr/jexus
 # Define startup scripts;
-ENTRYPOINT ["/usr/bin/bootstrat.sh"]
+ENTRYPOINT ["/usr/bin/bootstart.sh"]
