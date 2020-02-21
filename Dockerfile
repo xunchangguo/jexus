@@ -1,10 +1,10 @@
-FROM debian:buster-slim
+FROM debian:latest
 
 MAINTAINER Mongo <willem@xcloudbiz.com>
 
 RUN apt-get update \
 
-        && apt-get -y install wget sudo sqlite fontconfig xfonts-utils \
+        && apt-get -y install wget sqlite fontconfig xfonts-utils \
 
         && cd /usr \
 
