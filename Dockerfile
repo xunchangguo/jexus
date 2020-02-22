@@ -1,6 +1,5 @@
 
 FROM debian:buster-slim
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 MAINTAINER jamesqj <271686059@qq.com>
 
 COPY bootstart.sh /usr/bin/
