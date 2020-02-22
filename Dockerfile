@@ -1,3 +1,4 @@
+ARG REPO=mcr.microsoft.com/dotnet/core/runtime-deps
 FROM debian:buster-slim
 
 MAINTAINER jamesqj <271686059@qq.com>
