@@ -1,6 +1,6 @@
-ARG REPO=mcr.microsoft.com/dotnet/core/runtime-deps
-FROM debian:buster-slim
 
+FROM debian:buster-slim
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 MAINTAINER jamesqj <271686059@qq.com>
 
 COPY bootstart.sh /usr/bin/
@@ -8,10 +8,8 @@ RUN chmod +x /usr/bin/bootstart.sh
 # Install wget, download and install jexus, then cleanup
 COPY install.sh /tmp/
 RUN chmod +x /tmp/install.sh
-COPY core3.1.sh /tmp/
-RUN chmod +x /tmp/core3.1.sh
 RUN /tmp/install.sh
-RUN /tmp/core3.1.sh
+
 # Expost ports
 EXPOSE 80 443
 # Define volumes
