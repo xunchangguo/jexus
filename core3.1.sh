@@ -1,5 +1,5 @@
 #!/bin/bash -e
-ARG REPO=mcr.microsoft.com/dotnet/core/runtime-deps
+
 dotnet_version=3.1.2 \
     && curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Runtime/$dotnet_version/dotnet-runtime-$dotnet_version-linux-x64.tar.gz \
     && dotnet_sha512='24a8154248ed2a95b1a6c8d72e4a92d1e898393d7950da2fa103e96684784cdfe74483f2a583f6c033d61c4f9dd090b0b6bcab2062bbac4fcd142dcb5685c7ff' \
