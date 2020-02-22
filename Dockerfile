@@ -6,11 +6,11 @@ COPY bootstart.sh /usr/bin/
 RUN chmod +x /usr/bin/bootstart.sh
 # Install wget, download and install jexus, then cleanup
 COPY install.sh /tmp/
-COPY dotnet-install.sh /tmp/
+COPY core3.1.sh /tmp/
 RUN chmod +x /tmp/install.sh
-RUN chmod +x /tmp/dotnet-install.sh
+RUN chmod +x /tmp/core3.1.sh
 RUN /tmp/install.sh
-RUN /tmp/dotnet-install.sh --channel 3.1 --runtime aspnetcore
+RUN /tmp/core3.1.sh
 # Expost ports
 EXPOSE 80 443
 # Define volumes
