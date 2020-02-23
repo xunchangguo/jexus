@@ -11,6 +11,7 @@ RUN chmod +x /tmp/install.sh
 RUN chmod +x /tmp/core3.1.sh
 RUN /tmp/install.sh
 RUN /tmp/core3.1.sh
+RUN rm -rf /tmp/*
 # Expost ports
 EXPOSE 80 443
 # Define volumes
