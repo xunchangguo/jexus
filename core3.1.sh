@@ -7,3 +7,5 @@ chown root:root /etc/apt/sources.list.d/microsoft-prod.list
 apt-get -y install apt-transport-https
 apt-get update
 apt-get -y install aspnetcore-runtime-3.1
+apt-get autoremove -y
+rm -rf /var/lib/apt/lists/*
