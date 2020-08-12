@@ -1,4 +1,3 @@
-
 FROM debian:buster-slim
 MAINTAINER jamesqj <271686059@qq.com>
 
@@ -15,8 +14,8 @@ RUN rm -rf /tmp/*
 # Expost ports
 EXPOSE 80 443
 # Define volumes
-VOLUME ["/usr/jexus/siteconf", "/var/www", "/usr/jexus/log"]
+#VOLUME ["/usr/jexus/siteconf", "/var/www", "/usr/jexus/log"]
 # Define workdir
 WORKDIR /usr/jexus
 # Define startup scripts;
-ENTRYPOINT ["/usr/bin/bootstart.sh"]
+CMD ["/usr/bin/bootstart.sh"]
